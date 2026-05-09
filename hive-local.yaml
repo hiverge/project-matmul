@@ -1,0 +1,30 @@
+repo:
+  source: .
+  evaluation_script: evaluator.py
+  target_code:
+    - matmul.cpp
+  files:
+    - evaluator.py
+runtime:
+  num_agents: 2
+  max_runtime_seconds: 600
+  max_iterations: 300
+sandbox:
+  setup_script: null
+  resources:
+    cpu: '1'
+    memory: 4Gi
+  evaluation_timeout: 120
+  base_image: hive:matmul:latest
+prompt:
+  context: |
+    # Matrix Multiplication Optimization
+
+    You are optimizing a double-precision matrix multiplication (C = A*B, row-major).
+
+    ## Constraints
+    - BLAS-like signature: matmul(M, N, K, A, lda, B, ldb, C, ldc)
+    - Must pass correctness check (max abs error < 1e-9)
+
+    ## Objective
+    Maximize the speedup reported by the evaluator (higher is better).
