@@ -3,7 +3,7 @@ repo:
   target_code:
   - matmul.cpp
 runtime:
-  num_agents: 2
+  num_sandboxes: 2
   max_runtime_seconds: 600
   max_iterations: 300
 sandbox:
